@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 1000 250">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 250px;
+        fill: #00d966;
+        font-family: Calibri;
+      }
+
+      .cls-2 {
+        fill: #e9db43;
+      }
+    </style>
+  </defs>
+  <text id="Company" class="cls-1" x="16" y="183">Co<tspan class="cls-2">mpa</tspan>ny</text>
+</svg>

@@ -6,6 +6,8 @@
 
 .parallax-container{
 	height: 20%;
+	/*padding-top: 10px;*/
+	padding-bottom: 30px;
 }
 
 .parallax img {
@@ -16,6 +18,9 @@
 .clients img {
 	max-width: 150px;
 	filter: drop-shadow(2px 2px 3px rgba(0,0,0,.8));
+}
+div.clients h3{
+	padding-bottom: 20px;
 }
 
 section, footer {
