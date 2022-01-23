@@ -4,6 +4,10 @@
 	text-shadow: 1px 1px 3px rgba(0,0,0,.5);
 }
 
+.portfolio img{
+  margin-top: 20px;
+}
+
 .parallax-container{
 	height: 20%;
 	/*padding-top: 10px;*/
@@ -40,4 +44,10 @@ nav{
 	bottom: 50px;
 	right: 50px;
 	/*z-index: 999;*/
+}
+
+
+section.portfolio div.portfolio div.row{
+  background-color: salmon;
+  flex-wrap: wrap;
 }

@@ -1,3 +1,41 @@
+<?php 
+
+function get_curl($url){
+
+  // create url resource
+  $ch = curl_init();
+
+  // set url
+  curl_setopt($ch, CURLOPT_URL, $url);
+
+  //  return the transfer as string
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+  // $output contains the output string
+  $output = curl_exec($ch);
+
+  // clos curl resource to free up system resources
+  curl_close($ch);
+
+  return json_decode($output, 1);
+}
+
+
+$url = 'https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyDeIIInYgI6E7Eu1gV6OW7er4V8NsYx2ek&part=snippet,contentDetails&playlistId=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2&maxResults=1';
+
+$output = get_curl($url);
+
+$channelTitle = $output['items'][0]['snippet']['channelTitle'];
+$videoTitle = $output['items'][0]['snippet']['title'];
+$videoId = $output['items'][0]['snippet']['resourceId']['videoId'];
+
+$env = file_get_contents("env.json");
+$env = json_decode($env, true);
+
+$images = $env['items']['img']['url'];
+
+?>
+
 <!DOCTYPE html>
   <html>
     <head>
@@ -115,9 +153,10 @@
 
       <!-- Clients -->
       <div class="parallax-container clients scrollspy" id="clients">
+      <div class="parallax"><img src="img/slider/z.jpg"></div>
 
         <div class="center container clients">
-          <h3 class="center light white-text text-lighten-3">Our Clients</h3>
+          <h3 class="center light white-text text-lighten-3">Clients</h3>
 
           <div class="row">
             <div class="col m4 s12">
@@ -141,7 +180,7 @@
       <section class="services scrollspy grey lighten-3" id="services">
         <div class="container">
           <div class="row">
-            <h3 class="light center grey-text text-darken-4">Our Services</h3>
+            <h3 class="light center grey-text text-darken-4">Services</h3>
 
             <div class="col m4 s12">
               <div class="center card-panel m4 s12">
@@ -179,10 +218,12 @@
           <h3 class="center light gery-text text-lighten-3">Portfolio</h3>
 
           <div class="row">
-            <div class="col m3 sm12">
-              <img src="img/portfolio/1.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
+            <?php foreach($images as $img): ?>
+              <div class="col m3 sm12">
+                <img src="<?= $img ?>" class="responsive-img materialboxed">
+              </div>
+            <?php endforeach; ?>
+            <!-- <div class="col m3 sm12">
               <img src="img/portfolio/2.jpg" class="responsive-img materialboxed">
             </div>
             <div class="col m3 sm12">
@@ -191,9 +232,21 @@
             <div class="col m3 sm12">
               <img src="img/portfolio/4.jpg" class="responsive-img materialboxed">
             </div>
+            <div class="col m3 sm12">
+              <img src="img/portfolio/5.jpg" class="responsive-img materialboxed">
+            </div>
+            <div class="col m3 sm12">
+              <img src="img/portfolio/6.jpg" class="responsive-img materialboxed">
+            </div>
+            <div class="col m3 sm12">
+              <img src="img/portfolio/7.jpg" class="responsive-img materialboxed">
+            </div>
+            <div class="col m3 sm12">
+              <img src="img/portfolio/8.jpg" class="responsive-img materialboxed">
+            </div> -->
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col m3 sm12">
               <img src="img/portfolio/5.jpg" class="responsive-img materialboxed">
             </div>
@@ -206,10 +259,44 @@
             <div class="col m3 sm12">
               <img src="img/portfolio/8.jpg" class="responsive-img materialboxed">
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
       <!-- Akhir portfolio -->
+
+
+      <!-- Reference -->
+      <section class="scrollspy" id="">
+        <div class="container">
+          <h3 class="center light">Reference</h3>
+
+          <div class="row reference">
+            
+            <div class="col m5 sm12">
+              <h5 class="light"><?= $channelTitle ?></h5>
+              <a href="https://www.youtube.com/playlist?list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2" target="blank" class="black-text">
+                <h6 class="light"><?= $videoTitle ?></h6>
+              </a>
+              <div class="video-container">
+                <iframe width="853" height="480" src="//www.youtube.com/embed/<?= $videoId ?>?rel=0" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+
+            <div class="col m2"></div>
+
+            <div class="col m5 sm12">
+              <h5 class="light"><?= $channelTitle ?></h5>
+              <a href="https://www.youtube.com/playlist?list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2" target="blank" class="black-text">
+                <h6 class="light"><?= $videoTitle ?></h6>
+              </a>
+              <div class="video-container">
+                <iframe width="853" height="480" src="//www.youtube.com/embed/<?= $videoId ?>?rel=0" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Akhir Reference -->
 
 
       <!-- Contact Us -->
