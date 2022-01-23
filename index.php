@@ -1,29 +1,29 @@
 <?php 
 
-function get_curl($url){
+// function get_curl($url){
 
-  // create url resource
-  $ch = curl_init();
+//   // create url resource
+//   $ch = curl_init();
 
-  // set url
-  curl_setopt($ch, CURLOPT_URL, $url);
+//   // set url
+//   curl_setopt($ch, CURLOPT_URL, $url);
 
-  //  return the transfer as string
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//   //  return the transfer as string
+//   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-  // $output contains the output string
-  $output = curl_exec($ch);
+//   // $output contains the output string
+//   $output = curl_exec($ch);
 
-  // clos curl resource to free up system resources
-  curl_close($ch);
+//   // clos curl resource to free up system resources
+//   curl_close($ch);
 
-  return json_decode($output, 1);
-}
+//   return json_decode($output, 1);
+// }
 
 
-$url = 'https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyDeIIInYgI6E7Eu1gV6OW7er4V8NsYx2ek&part=snippet,contentDetails&playlistId=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2&maxResults=1';
+// $url = 'https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyDeIIInYgI6E7Eu1gV6OW7er4V8NsYx2ek&part=snippet,contentDetails&playlistId=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2&maxResults=1';
 
-$output = get_curl($url);
+// $output = get_curl($url);
 
 $channelTitle = $output['items'][0]['snippet']['channelTitle'];
 $videoTitle = $output['items'][0]['snippet']['title'];
@@ -219,32 +219,6 @@ $clients = $env['items']['img']['client']['url'];
 
       </section>
       <!-- Akhir portfolio -->
-
-
-      <!-- Reference -->
-      <section class="scrollspy" id="">
-        <div class="container">
-          <div class="row reference">
-          <h3 class="center light">Reference</h3>
-          
-          <div class="col m6 s12">
-            <div class="center card-panel">
-              <h5><?= $channelTitle ?></h5>
-              <a href="https://www.youtube.com/playlist?list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2" target="blank" class="black-text">
-                <h6 class="light"><?= $videoTitle ?></h6>
-              </a>
-              <div class="video-container">
-                <iframe width="853" height="480" src="//www.youtube.com/embed/<?= $videoId ?>?rel=0" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-          
-          
-
-        </div>
-      </section>
-      <!-- Akhir Reference -->
-
 
       <!-- Contact Us -->
       <section class="contact scrollspy grey lighten-3" id="contact">
