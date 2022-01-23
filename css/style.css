@@ -4,6 +4,14 @@
 	text-shadow: 1px 1px 3px rgba(0,0,0,.5);
 }
 
+.reference .card-panel{
+  padding-top: 10px;
+}
+
+.mb-0{
+  margin-bottom: 0;
+}
+
 .portfolio img{
   margin-top: 20px;
 }

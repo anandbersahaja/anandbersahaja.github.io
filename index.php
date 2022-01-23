@@ -32,7 +32,17 @@ $videoId = $output['items'][0]['snippet']['resourceId']['videoId'];
 $env = file_get_contents("env.json");
 $env = json_decode($env, true);
 
-$images = $env['items']['img']['url'];
+
+// PORTFOLIO
+$portfolios = $env['items']['img']['portfolio']['url'];
+
+// SLIDER
+$sliders = $env['items']['img']['slider']['url'];
+$words = $env['items']['img']['slider']['word'];
+$taglines = $env['items']['img']['slider']['tagline'];
+
+// CLIENT
+$clients = $env['items']['img']['client']['url'];
 
 ?>
 
@@ -71,12 +81,12 @@ $images = $env['items']['img']['url'];
                 <li><a href="#contact" class="black-text">Contact Us</a></li>
               </ul>
             </div>
-
     
           </div>
         </nav>
       </div>
       <!-- Akhir navbar -->
+
 
       <!-- Sidebar -->
       <ul class="sidenav" id="mobile-nav">
@@ -92,31 +102,18 @@ $images = $env['items']['img']['url'];
       <!-- Slider -->
       <div class="slider">
         <ul class="slides">
-          <li>
-            <img src="img/slider/a.jpg">
-            <div class="caption left-align">
-              <h3>Remember!</h3>
-              <h5 class="light gery-text text-lighten-3">A little bit more different is better than better</h5>
-            </div>
-          </li>
-          <li>
-            <img src="img/slider/f.jpg">
-            <div class="caption center-align">
-              <h3>Set your mind!</h3>
-              <h5 class="light gery-text text-lighten-3">Say lazy for lazy</h5>
-            </div>
-          </li>
-          <li>
-            <img src="img/slider/c.jpg">
-            <div class="caption right-align">
-              <h3>Do your best!</h3>
-              <h5 class="light gery-text text-lighten-3">Love life your live</h5>
-            </div>
-          </li>
+          <?php for($i=0; $i<count($sliders); $i++): ?>
+            <li>
+              <img src="<?= $sliders[$i] ?>">
+              <div class="caption left-align">
+                <h3><?= $taglines[$i] ?></h3>
+                <h5 class="light gery-text text-lighten-3"><?= $words[$i] ?></h5>
+              </div>
+            </li>
+          <?php endfor; ?>
         </ul>
       </div>
       <!-- Akhir Slider -->
-
 
 
       <!-- About US -->
@@ -131,17 +128,19 @@ $images = $env['items']['img']['url'];
 
             <div class="col m6 light">
               <p>WEB DEVELOPMENT</p>
-                <div class="progress">
-                  <div class="determinate blue" style="width: 90%"></div>
-                </div>
-                 <p>MOBILE APP DEVELOPMENT</p>
-                <div class="progress">
-                  <div class="determinate blue" style="width: 85%"></div>
-                </div>
-                 <p>GAME DEVELOPMENT</p>
-                <div class="progress">
-                  <div class="determinate blue" style="width: 85%"></div>
-                </div>
+              <div class="progress">
+                <div class="determinate blue" style="width: 90%"></div>
+              </div>
+              
+              <p>MOBILE APP DEVELOPMENT</p>
+              <div class="progress">
+                <div class="determinate blue" style="width: 85%"></div>
+              </div>
+              
+              <p>GAME DEVELOPMENT</p>
+              <div class="progress">
+                <div class="determinate blue" style="width: 85%"></div>
+              </div>
             </div>
 
           </div>
@@ -150,33 +149,26 @@ $images = $env['items']['img']['url'];
       <!-- Akhir About US -->
 
 
-
       <!-- Clients -->
       <div class="parallax-container clients scrollspy" id="clients">
       <div class="parallax"><img src="img/slider/z.jpg"></div>
 
         <div class="center container clients">
           <h3 class="center light white-text text-lighten-3">Clients</h3>
-
+          
           <div class="row">
-            <div class="col m4 s12">
-              <img src="img/clients/company.svg">
-            </div>
-            <div class="col m4 s12">
-              <img src="img/clients/company.svg">
-            </div>
-            <div class="col m4 s12">
-              <img src="img/clients/company.svg">
-            </div>
+            <?php foreach($clients as $client):?>
+              <div class="col m4 s12">
+                <img src="<?= $client ?>">
+              </div>
+            <?php endforeach; ?> 
           </div>
-
         </div>
       </div>
       <!-- Akhir Clients -->
-
   
 
-      <!-- Out Services -->
+      <!-- Our Services -->
       <section class="services scrollspy grey lighten-3" id="services">
         <div class="container">
           <div class="row">
@@ -216,51 +208,15 @@ $images = $env['items']['img']['url'];
       <section class="portfolio scrollspy" id="portfolio">
         <div class="container">
           <h3 class="center light gery-text text-lighten-3">Portfolio</h3>
-
           <div class="row">
-            <?php foreach($images as $img): ?>
+            <?php foreach($portfolios as $port): ?>
               <div class="col m3 sm12">
-                <img src="<?= $img ?>" class="responsive-img materialboxed">
+                <img src="<?= $port ?>" class="responsive-img materialboxed">
               </div>
             <?php endforeach; ?>
-            <!-- <div class="col m3 sm12">
-              <img src="img/portfolio/2.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/3.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/4.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/5.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/6.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/7.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/8.jpg" class="responsive-img materialboxed">
-            </div> -->
           </div>
-
-          <!-- <div class="row">
-            <div class="col m3 sm12">
-              <img src="img/portfolio/5.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/6.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/7.jpg" class="responsive-img materialboxed">
-            </div>
-            <div class="col m3 sm12">
-              <img src="img/portfolio/8.jpg" class="responsive-img materialboxed">
-            </div>
-          </div> -->
         </div>
+
       </section>
       <!-- Akhir portfolio -->
 
@@ -268,24 +224,12 @@ $images = $env['items']['img']['url'];
       <!-- Reference -->
       <section class="scrollspy" id="">
         <div class="container">
-          <h3 class="center light">Reference</h3>
-
           <div class="row reference">
-            
-            <div class="col m5 sm12">
-              <h5 class="light"><?= $channelTitle ?></h5>
-              <a href="https://www.youtube.com/playlist?list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2" target="blank" class="black-text">
-                <h6 class="light"><?= $videoTitle ?></h6>
-              </a>
-              <div class="video-container">
-                <iframe width="853" height="480" src="//www.youtube.com/embed/<?= $videoId ?>?rel=0" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-
-            <div class="col m2"></div>
-
-            <div class="col m5 sm12">
-              <h5 class="light"><?= $channelTitle ?></h5>
+          <h3 class="center light">Reference</h3>
+          
+          <div class="col m6 s12">
+            <div class="center card-panel">
+              <h5><?= $channelTitle ?></h5>
               <a href="https://www.youtube.com/playlist?list=PLFIM0718LjIWiihbBIq-SWPU6b6x21Q_2" target="blank" class="black-text">
                 <h6 class="light"><?= $videoTitle ?></h6>
               </a>
@@ -294,6 +238,9 @@ $images = $env['items']['img']['url'];
               </div>
             </div>
           </div>
+          
+          
+
         </div>
       </section>
       <!-- Akhir Reference -->
@@ -323,15 +270,15 @@ $images = $env['items']['img']['url'];
               <div class="card-panel">
                 <h5>Please fill out this form</h5>
                 <div class="input-field">
-                  <input type="text" name="name" id="name" required class="validate">
+                  <input type="text" name="name" id="name" class="validate" autocomplete="off">
                   <label for="name">Name</label>
                 </div>
                 <div class="input-field">
-                  <input type="email" name="email" id="email" class="validate">
+                  <input type="email" name="email" id="email" class="validate" autocomplete="off">
                   <label for="email">Email</label>
                 </div>
                 <div class="input-field">
-                  <input type="text" name="phone" id="phone">
+                  <input type="text" name="phone" id="phone" autocomplete="off">
                   <label for="phone">Phone Number</label>
                 </div>
                 <div class="input-field">
@@ -350,32 +297,30 @@ $images = $env['items']['img']['url'];
       <!-- Footer -->
         <footer class="page-footer grey darken-4">
           <div class="container">
-            <div class="row">
+            <div class="row mb-0">
               <div class="col l6 s12">
                 <h5 class="white-text">Footer Content</h5>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Social Media</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a target="blank" class="blue-text text-accent-2" href="https://www.facebook.com/anandbersahaja/">facebook</a></li>
+                  <li><a target="blank" class="red-text text-lighten-1" href="https://www.instagram.com/anandbersahaja/">instagram</a></li>
+                  <li><a target="blank" class="blue-text text-darken-3" href="https://www.linkedin.com/in/achmadsyaifulanand/">linkedin</a></li>
+                  <li><a target="blank" class="grey-text text-lighten-3" href="https://github.com/anandbersahaja">github</a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2021 Copyright built by Ananbersahaja
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2021 Copyright built by Anand Bersahaja
+            <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
             </div>
           </div>
         </footer>
       <!-- Akhir Footer -->
-
-
 
 
       <!--JavaScript at end of body for optimized loading-->
